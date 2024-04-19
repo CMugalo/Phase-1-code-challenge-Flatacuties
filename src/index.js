@@ -1,11 +1,21 @@
 // Your code here
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Fetch request for the character resources
+
+  function getAllCharacters() {
+    fetch("http://localhost:3000/characters")
+      .then((res) => res.json())
+      .then((characters) =>
+        characters.forEach((character) => renderOneCharacter(character))
+      );
+  }
+
+  /////////////////////////////////////////////////
+
   // Building elements and DOM Render Functions
 
   function renderOneCharacter(character) {
-    /////////////////////////////////////////////////
-
     // Add character names to DOM
     const card = document.createElement("span");
     card.textContent = character.name;
@@ -45,22 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
       displayVotes.textContent = animalVotes;
     }
   }
-
-  /////////////////////////////////////////////////
-
-  // Fetch request for the character resources
-
-  function getAllCharacters() {
-    fetch("http://localhost:3000/characters")
-      .then((res) => res.json())
-      .then((characters) =>
-        characters.forEach((character) => renderOneCharacter(character))
-      );
-  }
-
-  /////////////////////////////////////////////////
-
-  // Get character data, add them inside the div with span tags, and load them to the DOM
 
   function initialize() {
     getAllCharacters();
