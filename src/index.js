@@ -4,10 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Building elements and DOM Render Functions
 
   function renderOneCharacter(character) {
+    /////////////////////////////////////////////////
+
     // Add character names to DOM
     const card = document.createElement("span");
     card.textContent = character.name;
     document.querySelector("#character-bar").appendChild(card);
+
+    /////////////////////////////////////////////////
 
     // Adding click event listener
     card.addEventListener("click", (e) => {
@@ -20,18 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
       gifVotes.textContent = character.votes;
     });
   }
+
   /////////////////////////////////////////////////
+
+  // Adding submit event listener & displaying votes keyed in (No persistence)
+
   const votingForm = document.querySelector("#votes-form");
   votingForm.addEventListener("submit", (e) => {
     e.preventDefault();
     totalVotes(e.target.votes.value);
     votingForm.reset();
   });
-  ///////////////////////////////////////////////////
 
-  // Displaying votes cast
-
-  ///////////////////////////////////////////////////
   function totalVotes(animalVotes) {
     if (isNaN(animalVotes)) {
       return alert("Votes must be a number!");
@@ -53,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
         characters.forEach((character) => renderOneCharacter(character))
       );
   }
+
+  /////////////////////////////////////////////////
 
   // Get character data, add them inside the div with span tags, and load them to the DOM
 
