@@ -33,18 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ///////////////////////////////////////////////////
   function totalVotes(animalVotes) {
-    console.log(animalVotes);
-    const displayVotes = document.querySelector("#vote-count");
-    displayVotes.textContent = votesCast(animalVotes);
-  }
-
-  function votesCast(newVotes) {
-    if (isNaN(newVotes)) {
+    if (isNaN(animalVotes)) {
       return alert("Votes must be a number!");
     } else {
-      return newVotes;
+      console.log(animalVotes);
+      const displayVotes = document.querySelector("#vote-count");
+      displayVotes.textContent = animalVotes;
     }
   }
+
   /////////////////////////////////////////////////
 
   // Fetch request for the character resources
